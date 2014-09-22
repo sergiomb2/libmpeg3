@@ -39,15 +39,12 @@ EXTRA_DIST = docs
 
 noinst_HEADERS = bitstream.h \
 	ifo.h \
-	libmpeg3.h \
 	mpeg3atrack.h \
 	mpeg3css.h \
 	mpeg3css_fake.c \
 	mpeg3demux.h \
 	mpeg3io.h \
-	mpeg3private.h \
 	mpeg3private.inc \
-	mpeg3protos.h \
 	mpeg3title.h \
 	mpeg3vtrack.h \
 	timecode.h \
@@ -56,7 +53,7 @@ noinst_HEADERS = bitstream.h \
 dist_noinst_SCRIPTS = bootstrap
 
 pkgincludedir=$(includedir)/mpeg3
-pkginclude_HEADERS=libmpeg3.h mpeg3private.h
+pkginclude_HEADERS=libmpeg3.h mpeg3private.h mpeg3protos.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libmpeg3.pc
