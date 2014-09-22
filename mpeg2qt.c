@@ -71,6 +71,7 @@ void* trap_interrupt()
 
 int main(int argc, char *argv[])
 {
+	int error = 0;
 	int frame_count = -1;
 	char *row_pointers[3];
 	int do_audio = 0;
@@ -124,7 +125,7 @@ int main(int argc, char *argv[])
 	}
 
 //printf("main 1\n");
-	if(!(input = mpeg3_open(input_path)))
+	if(!(input = mpeg3_open(input_path, &error)))
 	{
 		exit(1);
 	}
@@ -180,7 +181,7 @@ int main(int argc, char *argv[])
 //printf("main 1\n");
 
 //	quicktime_set_jpeg(output, 100, 0);
-	mpeg3_set_mmx(input, 0);
+//	mpeg3_set_mmx(input, 0);
 
 	while((!(do_video && mpeg3_end_of_video(input, layer)) || 
 			!(do_audio && mpeg3_end_of_audio(input, astream))) &&
