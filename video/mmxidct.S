@@ -673,3 +673,7 @@ IDCT_mmx:
 	ret
 .Lfe1:
 	.size	 IDCT_mmx,.Lfe1-IDCT_mmx
+
+#ifdef __ELF__
+.section .note.GNU-stack,"",%progbits
+#endif
