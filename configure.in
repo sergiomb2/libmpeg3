@@ -19,10 +19,6 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_CPP
 AC_PROG_CXX
-# hack for using nasm for .S files
-#CCAS="nasm"
-AC_SUBST(CCAS)
-AC_SUBST(CCASFLAGS)
 
 ############## MMX
 
@@ -53,10 +49,36 @@ esac
 test "x$enable_mmx" = "xauto" && enable_mmx=no
 
 AM_CONDITIONAL(USEMMX, test "x$enable_mmx" = "xyes")
-AM_CONDITIONAL(USEMMX32, test "x$enable_mmx32" = "xyes")
-AM_CONDITIONAL(TARGET_BUILTIN_VECTOR,test "x$enable_mmx" = "xyes")
 AC_SUBST(LIBDECORE_LIBADD)
 AC_SUBST(CPU_CFLAGS)
+
+# Check for assembler
+#
+CCASFLAGS=""
+have_assembler=false
+if test x$enable_mmx = xtrue; then
+  AC_PATH_PROG([NASM], [nasm], [no])
+  if test "x$NASM" != "xno"; then
+    if test x$cpu_x86_64 = xtrue; then
+      CCASFLAGS="$NASM -O2 -felf64"
+    else
+      CCASFLAGS="$NASM -O2 -felf"
+    fi
+    have_assembler=true
+  fi
+
+  AC_PATH_PROG([YASM], [yasm], [no])
+  if test "x$YASM" != "xno"; then
+    if test x$cpu_x86_64 = xtrue; then
+      CCASFLAGS="$YASM -Xgnu -felf64"
+    else
+      CCASFLAGS="$YASM -Xgnu -felf"
+    fi
+    have_assembler=true
+  fi
+fi
+AC_SUBST(CCAS)
+AC_SUBST(CCASFLAGS)
 
 ############## END OF MMX
 
