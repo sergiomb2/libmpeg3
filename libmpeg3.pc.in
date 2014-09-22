@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@prefix@
+libdir=@libdir@
+includedir=@includedir@/mpeg3
+
+Name: @PACKAGE@
+Description: Decoder of various derivatives of MPEG standards
+Version: @VERSION@
+Requires: 
+Conflicts: 
+Libs: -L${libdir} -lmpeg3 -lpthread -la52
+Cflags: -I${includedir}
