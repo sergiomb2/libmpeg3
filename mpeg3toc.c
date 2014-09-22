@@ -574,7 +574,7 @@ mpeg3demux_movie_size(input->atrack[j]->demuxer));
 						if(j == vtracks - 1 && l == frame_count - 1)
 						{
 							total_frames += frame_count;
-							fprintf(stderr, "Video: title=%lld total_frames=%d ", title_number, total_frames);
+							fprintf(stderr, "Video: title=%lld total_frames=%d (%.1f \%)", title_number, total_frames,100*((float)position)/((float) mpeg3demux_movie_size(demuxer)));
 						}
 					}
 				}
