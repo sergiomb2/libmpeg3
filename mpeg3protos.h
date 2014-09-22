@@ -391,7 +391,7 @@ int mpeg3demux_open_title(mpeg3_demuxer_t *demuxer, int title_number);
 /* Go to the absolute byte given */
 int mpeg3demux_seek_byte(mpeg3_demuxer_t *demuxer, int64_t byte);
 
-/* Seek to the title and cell containing the absolute byte of the 
+/* Seek to the title and cell containing the absolute byte of the */
 /* demuxer. */
 /* Called at the beginning of every packet. */
 int mpeg3_seek_phys(mpeg3_demuxer_t *demuxer);
